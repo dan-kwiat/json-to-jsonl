@@ -11,7 +11,9 @@ const validateArray = arr => {
   return arr
 }
 
-const writeJSONLines = (jsonFilename, getArray) => {  
+const defaultGetArray = x => x
+
+const writeJSONLines = (jsonFilename, getArray=defaultGetArray) => {
   const json = getJSON(jsonFilename)
   const arr = validateArray(getArray(json))
   const jsonlFilename = jsonFilename.replace(/.json/g, '.jsonl')
