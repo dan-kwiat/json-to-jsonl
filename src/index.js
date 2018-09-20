@@ -20,7 +20,10 @@ const writeJSONLines = (jsonFilename, getArray=defaultGetArray) => {
   const writeStream = fs.createWriteStream(jsonlFilename)
   arr.map(x => writeStream.write(`${JSON.stringify(x)}\n`))
   writeStream.end()
-  return arr.length
+  return {
+    lines: arr.length,
+    file: jsonlFilename,
+  }
 }
 
 module.exports = writeJSONLines
